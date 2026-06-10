@@ -21,6 +21,16 @@ If you are developing a production application, we recommend using TypeScript wi
 -Create Vite app
 -Configured Tailwind Css
 -Header
+-Routing of App
+-login Form
+-Sign Up Form
+-Form validation
+-useRef HookCreate SignUp U
+-Firebase SetU
+-Deploying app to prod
+-Create SignUp User Account
+-Implement Sign In user Api
+-Created redux sTORE WITH USERslice
 
 -Login Form
 -Signup form
