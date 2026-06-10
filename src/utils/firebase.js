@@ -8,7 +8,7 @@ import {getAuth,createUserWithEmailAndPassword} from "firebase/auth"
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCyWCg_DG4L_YKjvwIM-XJovtq9jWz0M3c",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: "netflixgpt-f31c6.firebaseapp.com",
   projectId: "netflixgpt-f31c6",
   storageBucket: "netflixgpt-f31c6.firebasestorage.app",
@@ -16,7 +16,6 @@ const firebaseConfig = {
   appId: "1:728104737309:web:d1b5c440953ad1ec0c84f4",
   measurementId: "G-75ME1WJFQ2"
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
