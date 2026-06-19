@@ -45,7 +45,12 @@ If you are developing a production application, we recommend using TypeScript wi
 -Fetch Data for Trailer Video
 -Update Store with trailer Video Data
 -Embedded the Youtube video and make it autoplay and mute
-
+-Build secondary component
+-Build Movie List
+-Build Movie Card
+-Tmdb image con url
+-made browser page amazing with tailwind css
+-usePopular movie custom hook
 
 
 -Login Form
