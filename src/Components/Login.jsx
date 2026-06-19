@@ -1,22 +1,26 @@
  //instead of updating our  data after getting it in both signin signup and set it in our redux store we use firebase api onAuthStateChange(called when user signup,sign,signout)
  import Header from "./Header"
- import { useNavigate } from "react-router-dom"
+
  import {useState,useRef} from "react"
 import {checkValidateData} from "../utils/validate"
-import {createUserWithEmailAndPassword,signInWithEmailAndPassword} from "firebase/auth"
+import {createUserWithEmailAndPassword,signInWithEmailAndPassword,updateProfile} from "firebase/auth"
 import {auth} from "../utils/firebase"
+import { useDispatch } from "react-redux"
+import {addUser,removeUser} from "../utils/userSlice"
+import {BACKGROUND} from "../utils/constants"
 const Login=()=>{
  const [isSignInForm,setIsSignInForm]=useState(true)
  const [errorMessage,setErrorMessage]=useState(null)
- const navigate=useNavigate()
+
+ const dispatch=useDispatch()
  const email=useRef(null);
  const password=useRef(null);
  const handleButtonClick=()=>{
- 
+  
   //validate form data
   //console.log(email.current.value). gives email
   const message=checkValidateData(email.current.value,password.current.value);
-
+ 
   setErrorMessage(errorMessage)
   //after this do signup sign in
   if(message) return
@@ -27,8 +31,21 @@ if(!isSignInForm){
   .then((userCredential) => {
     // Signed up 
     const user = userCredential.user;
+    updateProfile(user, {
+  displayName: name.current.value, photoURL: "https://example.com/jane-q-user/profile.jpg"
+}).then(() => {
+  // Profile updated!
+  // ...
+  const {uid,email,displayName} = auth.currentUser;// to get updated fresh data and then set it
+    dispatch(addUser({uid:uid,email:email,displayName:displayName}))
+  
+}).catch((error) => {
+  // An error occurred
+  // ...
+});
+
     // ...
-    navigate("/browse")
+    
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -41,9 +58,11 @@ setErrorMessage(errorCode+errorMessage)
 signInWithEmailAndPassword(auth, email.current.value,password.current.value)
   .then((userCredential) => {
     // Signed in 
+   
+    
     const user = userCredential.user;
     // ...
-    navigate("/browse")
+  
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -60,7 +79,7 @@ return (
  <div>
   <Header/>
   <div className="absolute">
-  <img className="w-screen h-screen object-cover" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f562aaf4-5dbb-4603-a32b-6ef6c2230136/dh0w8qv-9d8ee6b2-b41a-4681-ab9b-8a227560dc75.jpg/v1/fill/w_1192,h_670,q_70,strp/the_netflix_login_background__canada__2024___by_logofeveryt_dh0w8qv-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6Ii9mL2Y1NjJhYWY0LTVkYmItNDYwMy1hMzJiLTZlZjZjMjIzMDEzNi9kaDB3OHF2LTlkOGVlNmIyLWI0MWEtNDY4MS1hYjliLThhMjI3NTYwZGM3NS5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.FScrpAAFnKqBVKwe2syeiOww6mfH6avq-DRHZ_uFVNw" alt="background"/>
+  <img className="w-screen h-screen object-cover" src={BACKGROUND} alt="background"/>
   </div>
   <div className="flex justify-center items-center h-screen ">
   
@@ -79,3 +98,5 @@ return (
 
 }
 export default Login
+
+// updateProfile() is used after signup to add additional user information such as displayName and photoURL. createUserWithEmailAndPassword() only creates the account with email and password, so we use updateProfile() to enrich the user's profile and then store the updated data in Redux.

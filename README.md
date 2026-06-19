@@ -31,6 +31,22 @@ If you are developing a production application, we recommend using TypeScript wi
 -Create SignUp User Account
 -Implement Sign In user Api
 -Created redux sTORE WITH USERslice
+-Implemented sign out 
+-uPDATE USER
+-BugFix:SignUp user displayName and profile picture update
+-BugFix:If the user is not logged in Redirect/Browse to Login Page and vice-versa
+-Unsubscribe to the onAuthStateChanged callback
+-make a constants file for all urls hardcoded
+-Register TMTB API and create an app & get access token
+-Get DATA FROM tmdb of now playing movies
+-Custom Hook for NowPlaying Movies
+-Update Store with movies Data
+-Planning for MainContainer and secondaryContainer
+-Fetch Data for Trailer Video
+-Update Store with trailer Video Data
+-Embedded the Youtube video and make it autoplay and mute
+
+
 
 -Login Form
 -Signup form
