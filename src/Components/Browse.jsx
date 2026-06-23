@@ -1,16 +1,27 @@
 import Header from "./Header"
 import MainContainer from "./MainContainer"
+import GptSearchComponent from "./GptSearchComponent"
 import SecondaryContainer from "./SecondaryContainer"
 import useNowPlayingMovies from "../hooks/useNowPlayingMovies"
 import usePopularMovie from "../hooks/usePopularMovie"
+import {toggleGptSearchView} from "../utils/gptSlice"
+import { useSelector } from "react-redux"
+
 const Browse=()=>{
+  const showGptSearch=useSelector((store)=>store.gpt.showGptSearch)
  useNowPlayingMovies()
  usePopularMovie()
  return(
   <div>
+
 <Header/>
-<MainContainer/>
+{showGptSearch ? <GptSearchComponent/> :(
+  <>
+  <MainContainer/>
 <SecondaryContainer/>
+  </>
+)}
+
   </div>
  )
 }

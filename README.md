@@ -51,6 +51,14 @@ If you are developing a production application, we recommend using TypeScript wi
 -Tmdb image con url
 -made browser page amazing with tailwind css
 -usePopular movie custom hook
+-gpt search Page
+-Gpt search bar
+-Multi-Language Feature in  our App
+-Integrate GPT Api's(Open Key)
+
+
+
+
 
 
 -Login Form
