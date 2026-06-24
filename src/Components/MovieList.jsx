@@ -3,7 +3,7 @@ const MovieList = ({ title, movies }) => {
    if (!movies) return null;
   console.log(movies, 'movies');
   return (
-    <div className='px-2 bg-black'>
+    <div className='px-2 bg-black/70'>
       <h1 className='text-3xl font-bold py-4 text-white'>{title}</h1>
       <div className='flex overflow-x-scroll'>
         

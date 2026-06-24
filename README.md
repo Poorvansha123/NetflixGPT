@@ -55,7 +55,8 @@ If you are developing a production application, we recommend using TypeScript wi
 -Gpt search bar
 -Multi-Language Feature in  our App
 -Integrate GPT Api's(Open Key)
-
+-Added movies to search from tmdb api
+-added autosuggestions
 
 
 

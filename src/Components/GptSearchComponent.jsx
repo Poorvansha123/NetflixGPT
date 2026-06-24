@@ -4,7 +4,7 @@ import {BACKGROUND} from "../utils/constants"
 const GptSearchComponent=()=>{
 return(
  <div>
-    <div className="absolute -z-10">
+    <div className="fixed -z-10">
     <img className="w-screen h-screen object-cover" src={BACKGROUND} alt="background"/>
     </div>
   <GptSearchBar/>
